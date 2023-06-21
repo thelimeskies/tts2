@@ -86,10 +86,10 @@ services:
     ports: []
     command: /start-celerybeat
 
-  flower:
-    <<: *django
-    image: blogtts_local_flower
-    container_name: blogtts_local_flower
-    ports:
-      - '5555:5555'
-    command: /start-flower
+  # flower:
+  #   <<: *django
+  #   image: blogtts_local_flower
+  #   container_name: blogtts_local_flower
+  #   ports:
+  #     - '5555:5555'
+  #   command: /start-flower
