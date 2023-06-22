@@ -45,3 +45,6 @@ migrate-to:
 
 migrations:
 				docker compose -f local.yml run --rm django python manage.py makemigrations
+
+logs:
+				docker compose -f local.yml logs -f
