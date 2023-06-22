@@ -47,8 +47,6 @@ def scrape_blog_post(url):
     max_retries=3,
     time_limit=3600,
     soft_time_limit=3600,
-    queue="dedicated_queue",
-    ignore_result=False,
 )
 def text_to_audio(self, instance_pk):
     """

@@ -2,8 +2,8 @@ import uuid
 
 from django.db import models
 from django.db.models.signals import post_save
-
-from blogtts.utils.tts import MicrosoftT5TTS
+from django.dispatch import receiver
+from blogtts.api.tasks import convert_content_to_audio
 
 
 class ScrapedArticle(models.Model):
@@ -26,21 +26,7 @@ class ScrapedArticle(models.Model):
     def __str__(self):
         return self.title
 
-    @classmethod
-    def synthesize_audio(self):
-        text = self.content
-
-        # Synthesize audio
-        tts = MicrosoftT5TTS()
-        audio_path = f"media/audio/{self.pk}.wav"
-        tts.to_wav_in_chunks(text, path=audio_path, chunk_size=100)
-        self.audio.name = audio_path  # Assign the audio file path to the audio field
-        self.save()
-
-
-def create_audio(sender, instance, created, **kwargs):
-    if created:
-        ScrapedArticle.synthesize_audio()
-
-
-post_save.connect(create_audio, sender=ScrapedArticle)
+# @receiver(post_save, sender=ScrapedArticle)
+# def create_audio(sender, instance, created, **kwargs):
+#     if created:
+#         convert_content_to_audio.delay(instance.id)

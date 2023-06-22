@@ -16,7 +16,9 @@ ALLOWED_HOSTS = [
     "0.0.0.0",
     "127.0.0.1",
     "http://ec2-3-139-82-199.us-east-2.compute.amazonaws.com",
-    "3.139.82.199",
+    "3.145.65.58",
+    "https://ec2-3-145-65-58.us-east-2.compute.amazonaws.com:8000",
+    ""
 ]
 
 # CACHES
