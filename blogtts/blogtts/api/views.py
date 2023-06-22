@@ -31,8 +31,8 @@ class ConvertTTSView(views.APIView):
     def post(self, request, *args, **kwargs):
         text = request.data["text"]
         tts = MicrosoftT5TTS()
-        audio = tts.synthesize(text)
         filename = f"{uuid.uuid4()}.wav"
+        audio = tts.to_wav_in_chunks(text, chunk_size=100, path=f"{settings.MEDIA_ROOT}/{filename}")
         with open(f"{settings.MEDIA_ROOT}/{filename}", "wb") as f:
             f.write(audio)
         if not audio:
