@@ -125,9 +125,7 @@ PASSWORD_HASHERS = [
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
-    },
+    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
@@ -346,11 +344,6 @@ CELERY_IMPORTS = [
     "blogtts.users.tasks",
     "blogtts.api.tasks",
 ]
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
 # add 5 min task to celery beat
 CELERY_BEAT_SCHEDULE = {
     "scraper": {
@@ -371,11 +364,3 @@ CELERY_TASK_TIME_LIMIT = 3600
 
 # CORS
 CORS_ORIGIN_ALLOW_ALL = True
-=======
->>>>>>> parent of 3162073 (Update)
-=======
->>>>>>> parent of 3162073 (Update)
-=======
->>>>>>> parent of 3162073 (Update)
-=======
->>>>>>> parent of 3162073 (Update)
