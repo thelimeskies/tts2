@@ -1,5 +1,5 @@
 import uuid
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, views
 
 from rest_framework.response import Response
 
@@ -24,7 +24,7 @@ class ScrapedArticleDetail(generics.RetrieveAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 
-class ConvertTTSView(generics.ApiView):
+class ConvertTTSView(views.ApiView):
     serializer_class = TTSSerializer
     permission_classes = [permissions.AllowAny]
 
