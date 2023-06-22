@@ -37,9 +37,8 @@ class Scrape:
         return post["first_name"] + " " + post["last_name"]
 
     def get_post_date(self, post_number):
-        data = self.get_json()
-        parsed = json.loads(data.text)
-        return parsed[post_number]["published_at"]
+        post = self.get_post(post_number)
+        return post["published_at"]
 
     def clean_body(self, post_number):
         # get post body
@@ -54,7 +53,13 @@ class Scrape:
             pattern = r"Introduction([\s\S]*)References"
             main_content = re.search(pattern, body)
 
-        article = main_content.group(1)
+        try:
+            article = main_content.group(1)
+        except AttributeError:
+            article = None
+
+        if not article:
+            article = body
         # Remove citations
         # Remove citations in the format "Author et al., Year" or "Author et al. (Year)"
         cleaned_text = re.sub(
