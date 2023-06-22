@@ -34,7 +34,7 @@ urlpatterns += [
         SpectacularSwaggerView.as_view(url_name="api-schema"),
         name="api-docs",
     ),
-    path("api/v1", include("blogtts.api.urls")),
+    path("api/v1/", include("blogtts.api.urls")),
 ]
 
 if settings.DEBUG:
