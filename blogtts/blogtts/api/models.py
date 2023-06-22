@@ -40,7 +40,7 @@ class ScrapedArticle(models.Model):
 
 def create_audio(sender, instance, created, **kwargs):
     if created:
-        ScrapedArticle.syntenize_audio(instance.pk)
+        ScrapedArticle.synthesize_audio()
 
 
 post_save.connect(create_audio, sender=ScrapedArticle)
