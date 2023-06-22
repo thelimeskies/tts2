@@ -15,12 +15,12 @@ CELERY_FLOWER_PASSWORD=debug
 
 # PostgreSQL
 # ------------------------------------------------------------------------------
-POSTGRES_HOST=postgres
+POSTGRES_HOST=localhost
 POSTGRES_PORT=5432
 POSTGRES_DB=magic
 POSTGRES_USER=debug
 POSTGRES_PASSWORD=debug
-DATABASE_URL=local://debug:debug@postgres:5432/magic
+DATABASE_URL=localhost://debug:debug@localhost:5432/magic
 
 # Celery
 # ------------------------------------------------------------------------------
