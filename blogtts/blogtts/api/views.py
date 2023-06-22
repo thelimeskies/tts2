@@ -32,9 +32,12 @@ class ConvertTTSView(views.APIView):
         text = request.data["text"]
         tts = MicrosoftT5TTS()
         filename = f"{uuid.uuid4()}.wav"
-        audio = tts.to_wav_in_chunks(text, chunk_size=100, path=f"{settings.MEDIA_ROOT}/{filename}")
-        with open(f"{settings.MEDIA_ROOT}/{filename}", "wb") as f:
-            f.write(audio)
-        if not audio:
+        tts.to_wav_in_chunks(text, chunk_size=100, path=f"{settings.MEDIA_ROOT}/{filename}")
+        # get audio from the path
+
+        audio_path = f"{settings.MEDIA_ROOT}/{filename}"
+        audio_url = f"{settings.MEDIA_URL}{filename}"
+
+        if not audio_url:
             return Response({"error": "Something went wrong"}, status=status.HTTP_400_BAD_REQUEST)
-        return Response({"audio": f"{settings.MEDIA_URL}{filename}"}, status=status.HTTP_200_OK)
+        return Response({"audio": audio_url}, status=status.HTTP_200_OK)
