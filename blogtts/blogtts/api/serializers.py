@@ -8,3 +8,7 @@ class ScrapedArticleSerializer(serializers.ModelSerializer):
         model = models.ScrapedArticle
         fields = "__all__"
         read_only_fields = ["audio"]
+
+
+class TTSSerializer(serializers.Serializer):
+    text = serializers.CharField()
