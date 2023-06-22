@@ -31,3 +31,4 @@ datasets==2.12.0 # http://github/com/huggingface/datasets
 soundfile==0.12.1 # http://github/com/bastibe/SoundFile
 torchaudio==2.0.2
 torch==2.0.1
+sentencepiece==0.1.99
