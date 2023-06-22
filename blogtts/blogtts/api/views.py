@@ -24,7 +24,7 @@ class ScrapedArticleDetail(generics.RetrieveAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 
-class ConvertTTSView(views.ApiView):
+class ConvertTTSView(views.APIView):
     serializer_class = TTSSerializer
     permission_classes = [permissions.AllowAny]
 
