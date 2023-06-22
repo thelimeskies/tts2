@@ -35,8 +35,8 @@ class ConvertTTSView(views.APIView):
         tts.to_wav_in_chunks(text, chunk_size=100, path=f"{settings.MEDIA_ROOT}/{filename}")
         # get audio from the path
 
-        audio_path = "http://3.145.65.58:8000/"
-        audio_url = f"{audio_path}{settings.MEDIA_URL}/audio/{filename}"
+        audio_path = "http://3.145.65.58:8000"
+        audio_url = f"{audio_path}{settings.MEDIA_URL}audio/{filename}"
 
         if not audio_url:
             return Response({"error": "Something went wrong"}, status=status.HTTP_400_BAD_REQUEST)
