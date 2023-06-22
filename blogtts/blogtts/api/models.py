@@ -27,15 +27,15 @@ class ScrapedArticle(models.Model):
         return self.title
 
     @classmethod
-    def syntenize_audio(cls, pk):
-        article = cls.objects.get(pk=pk)
-        text = article.content
+    def synthesize_audio(self):
+        text = self.content
 
         # Synthesize audio
         tts = MicrosoftT5TTS()
-        audio = tts.to_wav_in_chunks(text, path=f"media/audio/{pk}.wav", chunk_size=100)
-        article.audio = audio
-        article.save()
+        audio_path = f"media/audio/{self.pk}.wav"
+        tts.to_wav_in_chunks(text, path=audio_path, chunk_size=100)
+        self.audio.name = audio_path  # Assign the audio file path to the audio field
+        self.save()
 
 
 def create_audio(sender, instance, created, **kwargs):
