@@ -32,7 +32,7 @@ class ConvertTTSView(views.APIView):
         text = request.data["text"]
         tts = MicrosoftT5TTS()
         filename = f"{uuid.uuid4()}.wav"
-        tts.to_wav_in_chunks(text, chunk_size=100, path=f"{settings.MEDIA_ROOT}/{filename}")
+        tts.to_wav_in_chunks(text, chunk_size=100, path=f"{settings.MEDIA_ROOT}audio/{filename}")
         # get audio from the path
 
         audio_path = "http://3.145.65.58:8000"
