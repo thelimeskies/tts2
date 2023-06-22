@@ -38,27 +38,27 @@ services:
     ports:
       - '5432:5432'
 
-  docs:
-    image: blogtts_local_docs
-    container_name: blogtts_local_docs
-    build:
-      context: .
-      dockerfile: ./compose/local/docs/Dockerfile
-    env_file:
-      - ./.envs/.local/.django
-    volumes:
-      - ./docs:/docs:z
-      - ./config:/app/config:z
-      - ./blogtts:/app/blogtts:z
-    ports:
-      - '9000:9000'
-    command: /start-docs
+  # docs:
+  #   image: blogtts_local_docs
+  #   container_name: blogtts_local_docs
+  #   build:
+  #     context: .
+  #     dockerfile: ./compose/local/docs/Dockerfile
+  #   env_file:
+  #     - ./.envs/.local/.django
+  #   volumes:
+  #     - ./docs:/docs:z
+  #     - ./config:/app/config:z
+  #     - ./blogtts:/app/blogtts:z
+  #   ports:
+  #     - '9000:9000'
+  #   command: /start-docs
 
-  mailhog:
-    image: mailhog/mailhog:v1.0.0
-    container_name: blogtts_local_mailhog
-    ports:
-      - "8025:8025"
+  # mailhog:
+  #   image: mailhog/mailhog:v1.0.0
+  #   container_name: blogtts_local_mailhog
+  #   ports:
+  #     - "8025:8025"
 
   redis:
     image: redis:6
